@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const acceptedTypes = 'audio/wav,audio/x-wav,audio/m4a,audio/mp4';
+const acceptedTypes = 'audio/*';
 
 const UploadPanel = ({ onFileSelected }) => {
   const [isDragging, setIsDragging] = useState(false);
