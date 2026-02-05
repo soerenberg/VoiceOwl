@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 const CHART_WIDTH = 1000;
+const LEFT_GUTTER = 44;
 
 const getY = (pitch, graphLower, graphUpper, lineHeight) => {
   const clamped = Math.min(Math.max(pitch, graphLower), graphUpper);
@@ -73,8 +74,11 @@ const PitchGraph = ({
 
   const handleClick = (event, lineIndex) => {
     const rect = event.currentTarget.getBoundingClientRect();
-    const offsetX = event.clientX - rect.left;
-    const ratio = offsetX / rect.width;
+    const gutterPx = (LEFT_GUTTER / (CHART_WIDTH + LEFT_GUTTER)) * rect.width;
+    const plotWidth = rect.width - gutterPx;
+    const rawX = event.clientX - rect.left - gutterPx;
+    const offsetX = Math.min(Math.max(rawX, 0), plotWidth);
+    const ratio = plotWidth > 0 ? offsetX / plotWidth : 0;
     const time = Math.min(duration, lineIndex * lineWidth + ratio * lineWidth);
     onSeek(time);
   };
@@ -106,7 +110,7 @@ const PitchGraph = ({
               }
               return;
             }
-            const x = ((entry.time - lineStart) / lineWidth) * CHART_WIDTH;
+            const x = LEFT_GUTTER + ((entry.time - lineStart) / lineWidth) * CHART_WIDTH;
             const y = getY(entry.pitch, graphLower, graphUpper, lineHeight);
             currentPath.push({ x, y });
             if (showMarkers) {
@@ -125,7 +129,7 @@ const PitchGraph = ({
         const avg10Series = averages.avg10 ? buildSeriesPoints(averages.avg10) : null;
         const cursorX =
           cursorTime >= lineStart && cursorTime <= lineEnd
-            ? ((cursorTime - lineStart) / lineWidth) * CHART_WIDTH
+            ? LEFT_GUTTER + ((cursorTime - lineStart) / lineWidth) * CHART_WIDTH
             : null;
 
         const lowerBound = pitchLowerBound ?? graphLower;
@@ -140,20 +144,28 @@ const PitchGraph = ({
             style={{ animationDelay: `${lineIndex * 0.05}s` }}
           >
             <svg
-              viewBox={`0 0 ${CHART_WIDTH} ${lineHeight}`}
+              viewBox={`0 0 ${CHART_WIDTH + LEFT_GUTTER} ${lineHeight}`}
               height={lineHeight}
+              width="100%"
               preserveAspectRatio="none"
               onClick={(event) => handleClick(event, lineIndex)}
             >
-              <rect width={CHART_WIDTH} height={lineHeight} className="pitch-graph__bg" />
-              <rect width={CHART_WIDTH} height={upperY} className="pitch-graph__zone pitch-graph__zone--high" />
+              <rect x={LEFT_GUTTER} width={CHART_WIDTH} height={lineHeight} className="pitch-graph__bg" />
               <rect
+                x={LEFT_GUTTER}
+                width={CHART_WIDTH}
+                height={upperY}
+                className="pitch-graph__zone pitch-graph__zone--high"
+              />
+              <rect
+                x={LEFT_GUTTER}
                 width={CHART_WIDTH}
                 y={upperY}
                 height={lowerY - upperY}
                 className="pitch-graph__zone pitch-graph__zone--mid"
               />
               <rect
+                x={LEFT_GUTTER}
                 width={CHART_WIDTH}
                 y={lowerY}
                 height={lineHeight - lowerY}
@@ -163,8 +175,8 @@ const PitchGraph = ({
                 const y = getY(tick, graphLower, graphUpper, lineHeight);
                 return (
                   <g key={`tick-${lineIndex}-${tick}`}>
-                    <line x1="0" x2={CHART_WIDTH} y1={y} y2={y} className="pitch-graph__tick" />
-                    <text x="4" y={y - 2} className="pitch-graph__tick-label">
+                    <line x1={LEFT_GUTTER} x2={CHART_WIDTH + LEFT_GUTTER} y1={y} y2={y} className="pitch-graph__tick" />
+                    <text x={LEFT_GUTTER - 6} y={y - 2} className="pitch-graph__tick-label" textAnchor="end">
                       {tick}
                     </text>
                   </g>
