@@ -19,7 +19,7 @@ function App() {
     graphLineHeight: 200,
     graphLower: 100,
     graphUpper: 300,
-    showAvg1: false,
+    showAvg1: true,
     showAvg3: false,
     showAvg10: false,
     pitchLowerBound: null,
