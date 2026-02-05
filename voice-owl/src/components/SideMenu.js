@@ -23,7 +23,7 @@ const SideMenu = ({
               value={settings.precisionMs}
               onChange={(event) => update('precisionMs', Number(event.target.value))}
             >
-              {[50, 100, 200, 300, 500].map((value) => (
+              {[20, 25, 50, 100, 200, 300, 500, 750, 1000].map((value) => (
                 <option key={value} value={value}>
                   {value}
                 </option>
@@ -100,6 +100,12 @@ const SideMenu = ({
             />
           </Form.Group>
           <Form.Group className="side-menu__field">
+            <Form.Check
+              type="switch"
+              label="Show 0.1s Avg"
+              checked={settings.showAvg01}
+              onChange={(event) => update('showAvg01', event.target.checked)}
+            />
             <Form.Check
               type="switch"
               label="Show 1s Avg"

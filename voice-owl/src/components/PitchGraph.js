@@ -49,6 +49,7 @@ const PitchGraph = ({
   showAvg1,
   showAvg3,
   showAvg10,
+  showAvg01,
   pitchLowerBound,
   pitchUpperBound,
   cursorTime,
@@ -59,10 +60,11 @@ const PitchGraph = ({
   const lineCount = Math.max(1, Math.ceil(duration / lineWidth));
 
   const averages = useMemo(() => ({
+    avg01: showAvg01 ? computeMovingAverage(series, 0.1, stepSeconds) : null,
     avg1: showAvg1 ? computeMovingAverage(series, 1, stepSeconds) : null,
     avg3: showAvg3 ? computeMovingAverage(series, 3, stepSeconds) : null,
     avg10: showAvg10 ? computeMovingAverage(series, 10, stepSeconds) : null,
-  }), [series, showAvg1, showAvg3, showAvg10, stepSeconds]);
+  }), [series, showAvg01, showAvg1, showAvg3, showAvg10, stepSeconds]);
 
   const ticks = useMemo(() => {
     const result = [];
@@ -124,6 +126,7 @@ const PitchGraph = ({
         };
 
         const mainSeries = buildSeriesPoints(lineSeries);
+        const avg01Series = averages.avg01 ? buildSeriesPoints(averages.avg01) : null;
         const avg1Series = averages.avg1 ? buildSeriesPoints(averages.avg1) : null;
         const avg3Series = averages.avg3 ? buildSeriesPoints(averages.avg3) : null;
         const avg10Series = averages.avg10 ? buildSeriesPoints(averages.avg10) : null;
@@ -184,6 +187,9 @@ const PitchGraph = ({
               })}
               {mainSeries.paths.map((path, idx) => (
                 <path key={`path-${lineIndex}-${idx}`} d={path} className="pitch-graph__path" />
+              ))}
+              {avg01Series?.paths.map((path, idx) => (
+                <path key={`avg01-${lineIndex}-${idx}`} d={path} className="pitch-graph__path pitch-graph__path--avg01" />
               ))}
               {avg1Series?.paths.map((path, idx) => (
                 <path key={`avg1-${lineIndex}-${idx}`} d={path} className="pitch-graph__path pitch-graph__path--avg1" />

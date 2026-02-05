@@ -12,13 +12,14 @@ import { computePitchStats } from './utils/stats';
 
 function App() {
   const [settings, setSettings] = useState({
-    precisionMs: 100,
+    precisionMs: 20,
     graphLineWidth: 30,
     graphMarkers: false,
     graphTickGap: 50,
     graphLineHeight: 200,
     graphLower: 100,
     graphUpper: 300,
+    showAvg01: false,
     showAvg1: true,
     showAvg3: false,
     showAvg10: false,
@@ -241,6 +242,7 @@ function App() {
                 showAvg1={adjustedSettings.showAvg1}
                 showAvg3={adjustedSettings.showAvg3}
                 showAvg10={adjustedSettings.showAvg10}
+                showAvg01={adjustedSettings.showAvg01}
                 pitchLowerBound={adjustedSettings.pitchLowerBound}
                 pitchUpperBound={adjustedSettings.pitchUpperBound}
                 cursorTime={cursorTime}

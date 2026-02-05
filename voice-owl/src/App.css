@@ -256,9 +256,13 @@
 }
 
 .pitch-graph__path {
-  stroke: var(--mocha-blue);
+  stroke: var(--mocha-peach);
   stroke-width: 2;
   fill: none;
+}
+
+.pitch-graph__path--avg01 {
+  stroke: rgba(137, 180, 250, 0.8);
 }
 
 .pitch-graph__path--avg1 {
