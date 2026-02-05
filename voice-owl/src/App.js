@@ -16,7 +16,7 @@ function App() {
     graphLineWidth: 30,
     graphMarkers: false,
     graphTickGap: 50,
-    graphLineHeight: 50,
+    graphLineHeight: 200,
     graphLower: 100,
     graphUpper: 300,
     showAvg1: false,

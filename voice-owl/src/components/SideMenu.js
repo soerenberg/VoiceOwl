@@ -72,7 +72,7 @@ const SideMenu = ({
               value={settings.graphLineHeight}
               onChange={(event) => update('graphLineHeight', Number(event.target.value))}
             >
-              {[10, 20, 50, 70, 100].map((value) => (
+              {[50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300].map((value) => (
                 <option key={value} value={value}>
                   {value}
                 </option>
