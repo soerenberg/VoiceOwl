@@ -100,6 +100,12 @@ const SideMenu = ({
           <Form.Group className="side-menu__field">
             <Form.Check
               type="switch"
+              label="Show Main Line"
+              checked={settings.showMainLine}
+              onChange={(event) => update('showMainLine', event.target.checked)}
+            />
+            <Form.Check
+              type="switch"
               label="Show 0.1s Avg"
               checked={settings.showAvg01}
               onChange={(event) => update('showAvg01', event.target.checked)}

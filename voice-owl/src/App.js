@@ -19,6 +19,7 @@ function App() {
     graphLineHeight: 200,
     graphLower: 100,
     graphUpper: 300,
+    showMainLine: false,
     showAvg01: false,
     showAvg1: true,
     showAvg3: false,
@@ -239,6 +240,7 @@ function App() {
                 graphLower={adjustedSettings.graphLower}
                 graphUpper={adjustedSettings.graphUpper}
                 showMarkers={adjustedSettings.graphMarkers}
+                showMainLine={adjustedSettings.showMainLine}
                 showAvg1={adjustedSettings.showAvg1}
                 showAvg3={adjustedSettings.showAvg3}
                 showAvg10={adjustedSettings.showAvg10}

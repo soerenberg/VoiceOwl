@@ -46,6 +46,7 @@ const PitchGraph = ({
   graphLower,
   graphUpper,
   showMarkers,
+  showMainLine,
   showAvg1,
   showAvg3,
   showAvg10,
@@ -185,9 +186,10 @@ const PitchGraph = ({
                   </g>
                 );
               })}
-              {mainSeries.paths.map((path, idx) => (
-                <path key={`path-${lineIndex}-${idx}`} d={path} className="pitch-graph__path" />
-              ))}
+              {showMainLine &&
+                mainSeries.paths.map((path, idx) => (
+                  <path key={`path-${lineIndex}-${idx}`} d={path} className="pitch-graph__path" />
+                ))}
               {avg01Series?.paths.map((path, idx) => (
                 <path key={`avg01-${lineIndex}-${idx}`} d={path} className="pitch-graph__path pitch-graph__path--avg01" />
               ))}
