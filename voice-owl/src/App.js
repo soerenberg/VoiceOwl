@@ -201,12 +201,27 @@ function App() {
     <div className="App">
       <Container fluid className="app-shell">
         <header className="app-header">
-          <div className="app-title">Voice Owl</div>
-          <div className="app-subtitle">Pitch-focused voice analysis in your browser.</div>
+          <div>
+            <div className="app-title">Voice Owl</div>
+            <div className="app-subtitle">Pitch-focused voice analysis in your browser.</div>
+          </div>
+          <div className="app-header__panel">
+            <div className="app-card app-card--compact">
+              <div className="app-card__title">Load Audio</div>
+              <div className="load-audio__row">
+                <UploadPanel onFileSelected={handleFileSelected} />
+                <RecorderPanel onRecordingComplete={handleRecordingComplete} />
+              </div>
+              <div className="app-card__meta">
+                <div>Format: {audioMime || '--'}</div>
+                <div>Length: {duration ? `${duration.toFixed(1)}s` : '--'}</div>
+              </div>
+            </div>
+          </div>
         </header>
 
         <Row className="app-row">
-          <Col xs={12} lg={7} className="app-column">
+          <Col xs={12} lg={12} className="app-column">
             <div className="app-card">
               <div className="app-card__title">Pitch Graph</div>
               {isAnalyzing && (
@@ -232,17 +247,6 @@ function App() {
                 onSeek={handleSeek}
                 precisionMs={adjustedSettings.precisionMs}
               />
-            </div>
-          </Col>
-          <Col xs={12} lg={5} className="app-column">
-            <div className="app-card">
-              <div className="app-card__title">Load Audio</div>
-              <UploadPanel onFileSelected={handleFileSelected} />
-              <RecorderPanel onRecordingComplete={handleRecordingComplete} />
-              <div className="app-card__meta">
-                <div>Format: {audioMime || '--'}</div>
-                <div>Length: {duration ? `${duration.toFixed(1)}s` : '--'}</div>
-              </div>
             </div>
           </Col>
         </Row>

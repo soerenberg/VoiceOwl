@@ -35,28 +35,38 @@ const UploadPanel = ({ onFileSelected }) => {
       onDragLeave={() => setIsDragging(false)}
       onDrop={handleDrop}
     >
-      <div className="upload-panel__content">
-        <div className="upload-panel__icon" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 3l4 4h-3v6h-2V7H8l4-4z"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M5 14v4a2 2 0 002 2h10a2 2 0 002-2v-4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
+      <div className="upload-panel__row">
+        <div className="upload-panel__content">
+          <div className="upload-panel__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 3l4 4h-3v6h-2V7H8l4-4z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M5 14v4a2 2 0 002 2h10a2 2 0 002-2v-4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div className="upload-panel__text">
+            <div className="upload-panel__title">Drop a recording</div>
+            <div className="upload-panel__subtitle">WAV or M4A, or browse your files.</div>
+          </div>
         </div>
-        <div className="upload-panel__text">
-          <div className="upload-panel__title">Drop a recording</div>
-          <div className="upload-panel__subtitle">WAV or M4A, or browse your files.</div>
-        </div>
+        <Button
+          variant="outline-light"
+          size="sm"
+          className="upload-panel__button"
+          onClick={() => inputRef.current?.click()}
+        >
+          Browse files
+        </Button>
       </div>
       <Form.Group controlId="voice-upload">
         <Form.Control
@@ -67,14 +77,6 @@ const UploadPanel = ({ onFileSelected }) => {
           ref={inputRef}
         />
       </Form.Group>
-      <Button
-        variant="outline-light"
-        size="sm"
-        className="upload-panel__button"
-        onClick={() => inputRef.current?.click()}
-      >
-        Browse files
-      </Button>
     </div>
   );
 };

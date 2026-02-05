@@ -10,6 +10,10 @@
 
 .app-header {
   margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .app-title {
@@ -42,6 +46,36 @@
   animation: fade-rise 0.6s ease both;
 }
 
+.app-card--compact {
+  padding: 16px;
+  min-width: min(360px, 100%);
+}
+
+.load-audio__row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.load-audio__row .upload-panel {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}
+
+.load-audio__row .recorder-panel {
+  flex: 0 0 auto;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.app-card--compact .recorder-panel {
+  padding: 12px;
+}
+
+.app-header__panel {
+  flex: 0 0 auto;
+}
+
 .app-card--wide {
   margin-top: 24px;
   animation-delay: 0.15s;
@@ -71,7 +105,7 @@
 .upload-panel {
   border: 1px dashed rgba(166, 173, 200, 0.5);
   border-radius: 12px;
-  padding: 16px;
+  padding: 12px 14px;
   margin-bottom: 16px;
   background: rgba(69, 71, 90, 0.2);
   transition: border-color 0.2s ease, background 0.2s ease;
@@ -83,10 +117,19 @@
   background: rgba(137, 180, 250, 0.15);
 }
 
+.upload-panel__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .upload-panel__content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .upload-panel__icon {
@@ -109,7 +152,7 @@
 }
 
 .upload-panel__button {
-  margin-top: 12px;
+  flex: 0 0 auto;
 }
 
 .recorder-panel {
@@ -344,6 +387,10 @@
 }
 
 @media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+  }
+
   .app-card__meta {
     flex-direction: column;
     gap: 6px;
@@ -352,6 +399,15 @@
   .tool-button {
     bottom: 16px;
     left: 16px;
+  }
+
+  .upload-panel__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .load-audio__row {
+    flex-direction: column;
   }
 }
 
