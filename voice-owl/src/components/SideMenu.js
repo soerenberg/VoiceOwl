@@ -44,14 +44,12 @@ const SideMenu = ({
             </Form.Select>
           </Form.Group>
           <Form.Group className="side-menu__field">
-            <Form.Label>Show Markers</Form.Label>
-            <Form.Select
-              value={settings.graphMarkers ? 'true' : 'false'}
-              onChange={(event) => update('graphMarkers', event.target.value === 'true')}
-            >
-              <option value="false">False</option>
-              <option value="true">True</option>
-            </Form.Select>
+            <Form.Check
+              type="switch"
+              label="Show Markers"
+              checked={settings.graphMarkers}
+              onChange={(event) => update('graphMarkers', event.target.checked)}
+            />
           </Form.Group>
           <Form.Group className="side-menu__field">
             <Form.Label>Tick Gap (Hz)</Form.Label>

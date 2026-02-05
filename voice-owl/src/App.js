@@ -14,7 +14,7 @@ function App() {
   const [settings, setSettings] = useState({
     precisionMs: 20,
     graphLineWidth: 30,
-    graphMarkers: false,
+    graphMarkers: true,
     graphTickGap: 50,
     graphLineHeight: 200,
     graphLower: 100,
