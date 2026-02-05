@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/apps/voiceowl/static/css/main.506f290e.css",
-    "main.js": "/apps/voiceowl/static/js/main.84867e6a.js",
-    "static/js/215.0afd6584.chunk.js": "/apps/voiceowl/static/js/215.0afd6584.chunk.js",
-    "index.html": "/apps/voiceowl/index.html",
-    "main.506f290e.css.map": "/apps/voiceowl/static/css/main.506f290e.css.map",
-    "main.84867e6a.js.map": "/apps/voiceowl/static/js/main.84867e6a.js.map",
-    "215.0afd6584.chunk.js.map": "/apps/voiceowl/static/js/215.0afd6584.chunk.js.map"
+    "main.css": "/voiceowl/static/css/main.506f290e.css",
+    "main.js": "/voiceowl/static/js/main.8e33676e.js",
+    "static/js/215.0afd6584.chunk.js": "/voiceowl/static/js/215.0afd6584.chunk.js",
+    "index.html": "/voiceowl/index.html",
+    "main.506f290e.css.map": "/voiceowl/static/css/main.506f290e.css.map",
+    "main.8e33676e.js.map": "/voiceowl/static/js/main.8e33676e.js.map",
+    "215.0afd6584.chunk.js.map": "/voiceowl/static/js/215.0afd6584.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.506f290e.css",
-    "static/js/main.84867e6a.js"
+    "static/js/main.8e33676e.js"
   ]
 }
